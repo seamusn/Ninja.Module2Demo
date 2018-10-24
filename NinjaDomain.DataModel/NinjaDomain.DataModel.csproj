@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D6674FC2-21F7-42D2-9809-086B8DA9A83E}</ProjectGuid>
+    <ProjectGuid>{D3194DD4-FCBE-4CD4-B2D9-B4109411DF5B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NinjaDomain.Classes</RootNamespace>
-    <AssemblyName>NinjaDomain.Classes</AssemblyName>
+    <RootNamespace>NinjaDomain.DataModel</RootNamespace>
+    <AssemblyName>NinjaDomain.DataModel</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,10 +48,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes.cs" />
-    <Compile Include="Enums\EquipmentType.cs" />
-    <Compile Include="Enums\NinjaType.cs" />
+    <Compile Include="Migrations\201810242214245_Initial.cs" />
+    <Compile Include="Migrations\201810242214245_Initial.Designer.cs">
+      <DependentUpon>201810242214245_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810242253351_AddBirthday.cs" />
+    <Compile Include="Migrations\201810242253351_AddBirthday.Designer.cs">
+      <DependentUpon>201810242253351_AddBirthday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="NinjaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NinjaDomain.Classes\NinjaDomain.Classes.csproj">
+      <Project>{D6674FC2-21F7-42D2-9809-086B8DA9A83E}</Project>
+      <Name>NinjaDomain.Classes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810242214245_Initial.resx">
+      <DependentUpon>201810242214245_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810242253351_AddBirthday.resx">
+      <DependentUpon>201810242253351_AddBirthday.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
